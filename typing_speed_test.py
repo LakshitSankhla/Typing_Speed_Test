@@ -29,8 +29,8 @@ def test(msg):
     start_time = time.time()        #Start Time
     result = str(input())
     stop_time = time.time()           #Stop Time
-
     total_time = stop_time - start_time
+    wpm = len(result)*60 / (5*total_time)
     count = 1
     for i,c in enumerate(string):
         try:
@@ -40,14 +40,15 @@ def test(msg):
             pass
 
     accuracy = count / l * 100
-    return total_time , accuracy
+    return total_time , accuracy ,wpm
 
 if __name__ == "__main__":
 
     lines = get_sentences()
-    total_time , accuracy = test(lines)
+    total_time , accuracy ,wpm = test(lines)
 
     print("Time Taken= %f "% total_time)
     print("Accuracy= %f" % accuracy)
+    print("Words per minute= %f " % wpm)
 
 
